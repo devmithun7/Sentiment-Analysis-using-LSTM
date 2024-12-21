@@ -1,0 +1,1 @@
+{"timestamp": "2024-11-24 18:04:51", "world_size": 24, "epochs": 3, "batch_size": 32, "embedding_dim": 400, "hidden_dim": 512, "n_layers": 2}

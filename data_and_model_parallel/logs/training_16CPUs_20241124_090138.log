@@ -1,0 +1,8 @@
+2024-11-24 09:01:38,046 - INFO - Starting distributed training with the following parameters:
+2024-11-24 09:01:38,046 - INFO - Sequence length: 200
+2024-11-24 09:01:38,047 - INFO - Batch size: 32
+2024-11-24 09:01:38,047 - INFO - Number of epochs: 3
+2024-11-24 09:01:38,047 - INFO - World size: 16
+2024-11-24 11:58:30,525 - INFO - Training completed successfully
+2024-11-24 11:58:30,526 - INFO - Time Taken for Training: 2:56:52.477708 or 10612.477708 seconds
+2024-11-24 11:58:30,526 - INFO - Training process finished

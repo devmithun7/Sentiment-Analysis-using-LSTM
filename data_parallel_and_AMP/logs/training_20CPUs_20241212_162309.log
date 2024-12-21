@@ -1,0 +1,36 @@
+2024-12-12 16:23:09,410 - INFO - Starting distributed training with the following parameters:
+2024-12-12 16:23:09,411 - INFO - Sequence length: 200
+2024-12-12 16:23:09,411 - INFO - Batch size: 32
+2024-12-12 16:23:09,412 - INFO - Number of epochs: 3
+2024-12-12 16:23:09,413 - INFO - World size: 20
+2024-12-12 16:53:50,175 - ERROR - Training failed with error: 
+
+-- Process 7 terminated with the following error:
+Traceback (most recent call last):
+  File "/home/chaudhary.ans/.conda/envs/myenv/lib/python3.12/site-packages/torch/multiprocessing/spawn.py", line 90, in _wrap
+    fn(i, *args)
+  File "/home/chaudhary.ans/CSYE7105/Final Project/temp/train_model.py", line 236, in run_training
+    model = train_model(model, train_loader, val_loader, criterion, optimizer, epochs, batch_size, device, rank, world_size, embedding_dim, hidden_dim, n_layers, save_dir, scaler)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/chaudhary.ans/CSYE7105/Final Project/temp/train_model.py", line 109, in train_model
+    scaler.step(optimizer)
+  File "/home/chaudhary.ans/.conda/envs/myenv/lib/python3.12/site-packages/torch/amp/grad_scaler.py", line 457, in step
+    retval = self._maybe_opt_step(optimizer, optimizer_state, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/chaudhary.ans/.conda/envs/myenv/lib/python3.12/site-packages/torch/amp/grad_scaler.py", line 352, in _maybe_opt_step
+    retval = optimizer.step(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/chaudhary.ans/.conda/envs/myenv/lib/python3.12/site-packages/torch/optim/optimizer.py", line 487, in wrapper
+    out = func(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/chaudhary.ans/.conda/envs/myenv/lib/python3.12/site-packages/torch/optim/optimizer.py", line 91, in _use_grad
+    ret = func(self, *args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/chaudhary.ans/.conda/envs/myenv/lib/python3.12/site-packages/torch/optim/adam.py", line 213, in step
+    has_complex = self._init_group(
+                  ^^^^^^^^^^^^^^^^^
+  File "/home/chaudhary.ans/.conda/envs/myenv/lib/python3.12/site-packages/torch/optim/adam.py", line 157, in _init_group
+    state["exp_avg_sq"] = torch.zeros_like(
+                          ^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 202.00 MiB. GPU 0 has a total capacity of 31.74 GiB of which 95.06 MiB is free. Process 102359 has 1.26 GiB memory in use. Process 102272 has 1.65 GiB memory in use. Process 102220 has 1.65 GiB memory in use. Process 102393 has 1.65 GiB memory in use. Process 103036 has 1.65 GiB memory in use. Process 102309 has 1.85 GiB memory in use. Process 102953 has 1.45 GiB memory in use. Process 102164 has 1.65 GiB memory in use. Process 102441 has 1.45 GiB memory in use. Including non-PyTorch memory, this process has 1.45 GiB memory in use. Process 102600 has 1.65 GiB memory in use. Process 102871 has 1.45 GiB memory in use. Process 102904 has 1.65 GiB memory in use. Process 102769 has 1.65 GiB memory in use. Process 102521 has 1.45 GiB memory in use. Process 103072 has 1.65 GiB memory in use. Process 102987 has 1.45 GiB memory in use. Process 102651 has 1.65 GiB memory in use. Process 102818 has 1.65 GiB memory in use. Process 102570 has 1.65 GiB memory in use. Of the allocated memory 874.66 MiB is allocated by PyTorch, and 205.34 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+

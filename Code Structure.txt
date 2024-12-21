@@ -1,0 +1,19 @@
+1. data_parallel - folder for code with DDP
+2. data_and_model_parallel - folder for code with DDP and model parallel with CPUs
+3. data_parallel_and_AMP - folder with code for DDP and AMP
+4. dataset - Dataset folder
+5. POC Notebooks - play area notebooks before final modeling
+6. speedup and efficiency.ipynb - this is the comparison between different CPU runs, speedup, efficiency and Dask vs Pandas
+
+inside each folder i.e. data_parallel, data_and_model_parallel 
+.ipynb - file to execute the code (run from inside the folder)
+data_processing.py - Dask data processing
+model.py - model defination
+utils.py - utility fucntion
+train_model.py - train the model 
+evaluate_model.py - evaluate the model
+main.py - use mp for execution
+
+dask_report - data processing report
+logs - log file with execution times
+saved_model - exported models and the performance 
