@@ -200,6 +200,55 @@ Dask demonstrates **~3× faster** preprocessing on large files.
 
 ---
 
+---
+# 🚀 Installation, Usage & Analysis
+
+## 🔧 Installation
+Clone the repository:
+git clone https://github.com/devmithun7/Sentiment-Analysis-using-LSTM.git
+cd Sentiment-Analysis-using-LSTM
+
+Install dependencies:
+pip install -r requirements.txt
+
+Download dataset (place files in dataset/ folder):
+- main_data.csv
+- subset_data.csv
+
+---
+
+## 🧪 Serial Training (Baseline)
+CPU Serial Training:
+jupyter notebook SerialProcessing/cpu/SerialExecutionCPU.ipynb
+
+GPU Serial Training:
+jupyter notebook SerialProcessing/gpu/SerialExecutionGPU.ipynb
+
+---
+
+## ⚡ Parallel Training
+DDP CPU Training:
+cd ParallelProcessing/cpus_with_DDP/
+python main.py --epochs 20 --batch-size 64
+
+DDP GPU Training:
+cd ParallelProcessing/gpus_with_DDP/
+python main.py --epochs 20 --batch-size 128
+
+Full Parallelism (DDP + AMP + Model Parallel):
+cd ParallelProcessing/gpus_with_DDP_AMP_ModelParallel/
+python main.py --epochs 20 --amp --model-parallel
+
+---
+
+## 📊 Analysis
+Run Performance Evaluation Notebooks:
+jupyter notebook Analysis/CPU-Comparison.ipynb
+jupyter notebook Analysis/GPU-Comparison.ipynb
+jupyter notebook "SpeedUp and Efficiency.ipynb"
+
+---
+
 ## 📁 Repository Structure
 
 ```plaintext
@@ -297,54 +346,3 @@ Sentiment-Analysis-using-LSTM/
 ├── SpeedUp and Efficiency.ipynb
 ├── README.md
 └── requirements.txt
-
-
-```plaintext
-
----
-# 🚀 Installation, Usage & Analysis
-
-## 🔧 Installation
-Clone the repository:
-git clone https://github.com/devmithun7/Sentiment-Analysis-using-LSTM.git
-cd Sentiment-Analysis-using-LSTM
-
-Install dependencies:
-pip install -r requirements.txt
-
-Download dataset (place files in dataset/ folder):
-- main_data.csv
-- subset_data.csv
-
----
-
-## 🧪 Serial Training (Baseline)
-CPU Serial Training:
-jupyter notebook SerialProcessing/cpu/SerialExecutionCPU.ipynb
-
-GPU Serial Training:
-jupyter notebook SerialProcessing/gpu/SerialExecutionGPU.ipynb
-
----
-
-## ⚡ Parallel Training
-DDP CPU Training:
-cd ParallelProcessing/cpus_with_DDP/
-python main.py --epochs 20 --batch-size 64
-
-DDP GPU Training:
-cd ParallelProcessing/gpus_with_DDP/
-python main.py --epochs 20 --batch-size 128
-
-Full Parallelism (DDP + AMP + Model Parallel):
-cd ParallelProcessing/gpus_with_DDP_AMP_ModelParallel/
-python main.py --epochs 20 --amp --model-parallel
-
----
-
-## 📊 Analysis
-Run Performance Evaluation Notebooks:
-jupyter notebook Analysis/CPU-Comparison.ipynb
-jupyter notebook Analysis/GPU-Comparison.ipynb
-jupyter notebook "SpeedUp and Efficiency.ipynb"
-
