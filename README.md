@@ -200,49 +200,48 @@ Dask demonstrates **~3× faster** preprocessing on large files.
 
 ---
 
----
-## 🚀 Getting Started
+## Usage
 
-### Prerequisites
-Python 3.8+, PyTorch 1.9+, CUDA 11.0+ (for GPU training)
+### Serial Training (Baseline)
 
-### Installation
-
-**Clone the repository:**
-`git clone https://github.com/devmithun7/Sentiment-Analysis-using-LSTM.git`
-`cd Sentiment-Analysis-using-LSTM`
-
-**Install dependencies:**
-`pip install -r requirements.txt`
-
-**Download dataset:**
-Place Amazon Customer Reviews dataset in dataset/ folder (Files: main_data.csv, subset_data.csv)
-
-### Usage
-
-#### Serial Training (Baseline)
 **CPU Serial Training:** `jupyter notebook SerialProcessing/cpu/SerialExecutionCPU.ipynb`
+
 **GPU Serial Training:** `jupyter notebook SerialProcessing/gpu/SerialExecutionGPU.ipynb`
 
-#### Parallel Training
-**DDP CPU Training:** `cd ParallelProcessing/cpus_with_DDP/` then `python main.py --epochs 20 --batch-size 64`
-**DDP GPU Training:** `cd ParallelProcessing/gpus_with_DDP/` then `python main.py --epochs 20 --batch-size 128`
-**Full Parallelism:** `cd ParallelProcessing/gpus_with_DDP_AMP_ModelParallel/` then `python main.py --epochs 20 --amp --model-parallel`
+### Parallel Training
 
-#### Analysis
-**Performance Analysis:** 
+**DDP CPU Training:** 
+- `cd ParallelProcessing/cpus_with_DDP/`
+- `python main.py --epochs 20 --batch-size 64`
+
+**DDP GPU Training:** 
+- `cd ParallelProcessing/gpus_with_DDP/`
+- `python main.py --epochs 20 --batch-size 128`
+
+**Full Parallelism (DDP + AMP + Model Parallel):** 
+- `cd ParallelProcessing/gpus_with_DDP_AMP_ModelParallel/`
+- `python main.py --epochs 20 --amp --model-parallel`
+
+### Analysis
+
+**Performance Analysis:**
 - `jupyter notebook Analysis/CPU-Comparison.ipynb`
 - `jupyter notebook Analysis/GPU-Comparison.ipynb`
 - `jupyter notebook "SpeedUp and Efficiency.ipynb"`
 
-#### Advanced Usage
+### Advanced Usage
+
 **Custom Parameters:** `python main.py --epochs 50 --batch-size 256 --lr 0.001`
+
 **Mixed Precision:** `python main.py --epochs 20 --amp --gradient-accumulation-steps 4`
+
 **Distributed Launch:** `python -m torch.distributed.launch --nproc_per_node=4 main.py --epochs 20`
+
 **Data Preprocessing:** `python dataset/preprocessing_pipeline.py --input dataset/main_data.csv --output dataset/processed_data.csv`
+
 **Model Evaluation:** `python evaluate.py --model-path models/best_model.pth --test-data dataset/subset_data.csv`
+
 **TensorBoard Monitoring:** `tensorboard --logdir logs/ --port 6006`
----
 
 ## 📁 Repository Structure
 
