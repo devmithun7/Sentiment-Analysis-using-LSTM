@@ -196,3 +196,28 @@ Dask demonstrates **~3× faster** preprocessing on large files.
 ## 📁 Repository Structure
 
 
+### 📂 Directory Overview
+
+| Directory | Description |
+|-----------|-------------|
+| `POC notebooks/` | Proof-of-concept experiments and initial model development |
+| `data_and_model_parallel/` | Hybrid parallelism combining data and model parallelism |
+| `data_parallel/` | Pure DistributedDataParallel (DDP) implementations |
+| `data_parallel_and_AMP/` | DDP with Automatic Mixed Precision optimization |
+| `dataset/` | Raw data, preprocessing scripts, and data loaders |
+| `models/` | Model architectures, utilities, and saved checkpoints |
+| `utils/` | Helper functions for metrics, visualization, and distributed training |
+| `experiments/` | Performance results, logs, and analysis plots |
+| `configs/` | YAML configuration files for different training scenarios |
+| `scripts/` | Shell scripts for automation and environment setup |
+| `docs/` | Project documentation and guides |
+
+### 📄 Key Files
+
+| File | Purpose |
+|------|---------|
+| `EDA and Data Analysis.ipynb` | Comprehensive dataset exploration and analysis |
+| `SpeedUp and Efficiency.ipynb` | Performance benchmarking and scalability analysis |
+| `Code Structure.txt` | Detailed codebase organization documentation |
+| `requirements.txt` | Python package dependencies |
+| `README.md` | Project documentation (this file) |
