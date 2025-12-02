@@ -203,25 +203,148 @@ Dask demonstrates **~3× faster** preprocessing on large files.
 ## 📁 Repository Structure
 
 ```plaintext
-SentimentAnalysis-DDP/
+Sentiment-Analysis-using-LSTM/
 │
-├── data_preprocessing/
-│   └── preprocessing.ipynb
+├── POC notebooks/
+│   ├── initial_model_exploration.ipynb
+│   ├── data_preprocessing_tests.ipynb
+│   ├── model_architecture_comparison.ipynb
+│   └── baseline_performance.ipynb
 │
-├── serial_training/
-│   └── lstm_serial.ipynb
+├── data_and_model_parallel/
+│   ├── train_hybrid_parallel.py
+│   ├── model_parallel_lstm.py
+│   ├── distributed_data_loader.py
+│   ├── hybrid_performance_analysis.ipynb
+│   ├── model.py
+│   └── logs/models/metrics/plots/
 │
-├── parallel_training/
-│   ├── ddp/
-│   │   ├── main.py
-│   │   ├── ddp_train.py
-│   │   └── model.py
+├── data_parallel/
+│   ├── ddp_training.py
+│   ├── main.py
+│   ├── model.py
+│   ├── distributed_sampler.py
+│   ├── scaling_analysis.ipynb
+│   └── logs/models/metrics/plots/
+│
+├── data_parallel_and_AMP/
+│   ├── amp_ddp_training.py
+│   ├── main.py
+│   ├── model.py
+│   ├── gradient_scaler.py
+│   ├── memory_usage_analysis.ipynb
+│   └── logs/models/metrics/plots/
+│
+├── dataset/
+│   ├── main_data.csv
+│   ├── subset_data.csv
+│   ├── data_loader.py
+│   ├── preprocessing_pipeline.py
+│   ├── text_cleaning.py
+│   ├── label_encoding.py
+│   └── dataset_info.json
+│
+├── SerialProcessing/
+│   ├── cpu/
+│   │   ├── SerialExecutionCPU.ipynb
+│   │   ├── single_thread_lstm.py
+│   │   └── logs/models/metrics/plots/
 │   │
-│   ├── ddp_model_parallel/
-│   │   ├── main.py
-│   │   ├── ddp_mp_train.py
-│   │   └── model_parallel.py
+│   └── gpu/
+│       ├── SerialExecutionGPU.ipynb
+│       ├── SerialExecutionGPU-BatchSize.ipynb
+│       ├── single_gpu_lstm.py
+│       └── logs/models/metrics/plots/
 │
-└── reports/
-    ├── performance_plots/
-    └── analysis_summary.md
+├── ParallelProcessing/
+│   ├── cpus_with_DDP/
+│   │   ├── ddp_train.py
+│   │   ├── main.py
+│   │   ├── model.py
+│   │   ├── ParallelExecutionCPU.ipynb
+│   │   └── logs/models/metrics/plots/
+│   │
+│   ├── gpus_with_DDP/
+│   │   ├── ddp_train.py
+│   │   ├── main.py
+│   │   ├── model.py
+│   │   ├── ParallelExecutionGPU.ipynb
+│   │   └── logs/models/metrics/plots/
+│   │
+│   ├── cpus_with_DDP_AMP/
+│   │   ├── ddp_train.py
+│   │   ├── main.py
+│   │   ├── model.py
+│   │   ├── ParallelExecutionCPU_AMP.ipynb
+│   │   └── logs/models/metrics/plots/
+│   │
+│   └── gpus_with_DDP_AMP_ModelParallel/
+│       ├── ddp_train.py
+│       ├── main.py
+│       ├── model.py
+│       ├── FullParallelExecution.ipynb
+│       └── logs/models/metrics/plots/
+│
+├── Analysis/
+│   ├── CPU-Comparison.ipynb
+│   ├── GPU-Comparison.ipynb
+│   └── Scalability-Analysis.ipynb
+│
+├── preprocessed_sentiment_data/
+│
+├── Code Structure.txt
+├── EDA and Data Analysis.ipynb
+├── SpeedUp and Efficiency.ipynb
+├── README.md
+└── requirements.txt
+
+
+```plaintext
+
+---
+# 🚀 Installation, Usage & Analysis
+
+## 🔧 Installation
+Clone the repository:
+git clone https://github.com/devmithun7/Sentiment-Analysis-using-LSTM.git
+cd Sentiment-Analysis-using-LSTM
+
+Install dependencies:
+pip install -r requirements.txt
+
+Download dataset (place files in dataset/ folder):
+- main_data.csv
+- subset_data.csv
+
+---
+
+## 🧪 Serial Training (Baseline)
+CPU Serial Training:
+jupyter notebook SerialProcessing/cpu/SerialExecutionCPU.ipynb
+
+GPU Serial Training:
+jupyter notebook SerialProcessing/gpu/SerialExecutionGPU.ipynb
+
+---
+
+## ⚡ Parallel Training
+DDP CPU Training:
+cd ParallelProcessing/cpus_with_DDP/
+python main.py --epochs 20 --batch-size 64
+
+DDP GPU Training:
+cd ParallelProcessing/gpus_with_DDP/
+python main.py --epochs 20 --batch-size 128
+
+Full Parallelism (DDP + AMP + Model Parallel):
+cd ParallelProcessing/gpus_with_DDP_AMP_ModelParallel/
+python main.py --epochs 20 --amp --model-parallel
+
+---
+
+## 📊 Analysis
+Run Performance Evaluation Notebooks:
+jupyter notebook Analysis/CPU-Comparison.ipynb
+jupyter notebook Analysis/GPU-Comparison.ipynb
+jupyter notebook "SpeedUp and Efficiency.ipynb"
+
